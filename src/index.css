@@ -13,3 +13,7 @@ html {
   border-radius: 5px;
   padding: 12px;
 }
+
+.card img {
+  width: 300px;
+}
