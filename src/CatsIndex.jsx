@@ -1,4 +1,4 @@
-export function CatsIndex({cats}) {
+export function CatsIndex({cats, onShow}) {
 
   return (
     <>
@@ -10,7 +10,7 @@ export function CatsIndex({cats}) {
         <p>breed: {cat.breed}</p>
         <p>age: {cat.age}</p>
         <img src={cat.image} alt="" />
-        <button>More info</button>
+        <button onClick={() => onShow(cat)}>More info</button>
       </div>
       ))}
     </div>
