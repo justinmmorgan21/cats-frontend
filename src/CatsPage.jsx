@@ -24,11 +24,27 @@ export function CatsPage() {
       successCallback();
     })
   }
-
+  
   const handleShow = (cat) => {
     console.log(cat);
     setShowIsVisible(true);
     setCurrentCat(cat);
+  }
+  
+  const handleUpdate = (params, id, successCallback) => {
+    axios.patch(`http://localhost:3000/cats/${id}.json`, params).then(response => {
+      setCats(cats.map(cat => id === cat.id ? response.data : cat));
+      successCallback();
+      handleClose();
+    })
+  }
+  
+  const handleDestroy = (id) => {
+    axios.delete(`http://localhost:3000/cats/${id}.json`).then(response => {
+      setCats(cats.filter(cat => id !== cat.id));
+      handleClose();
+    })
+
   }
 
   const handleClose = () => {
@@ -42,7 +58,7 @@ export function CatsPage() {
       <CatsNew onCreate={handleCreate}/>
       <CatsIndex cats={cats} onShow={handleShow}/>
       <Modal show={showIsVisible} onClose={handleClose}>
-        <CatsShow cat={currentCat}/>
+        <CatsShow cat={currentCat} onUpdate={handleUpdate} onDestroy={handleDestroy}/>
       </Modal>
     </main>
   )
