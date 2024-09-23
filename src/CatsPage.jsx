@@ -13,7 +13,7 @@ export function CatsPage() {
     })
   }
 
-  // useEffect(handleIndex)
+  useEffect(handleIndex, [])
 
   return (
     <main>
