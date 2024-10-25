@@ -13,7 +13,7 @@ export function CatsShow({ cat, onUpdate, onDestroy } ) {
     <span>{cat.breed},&nbsp;&nbsp;</span><span>{cat.age} years old</span>
     <br />
     <br />
-    <img src={cat.image} alt="" />
+    <img id="show-img" src={cat.image} alt="" />
     <br />
     <form onSubmit={handleSubmit}>
         <div>
